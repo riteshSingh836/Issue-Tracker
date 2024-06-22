@@ -1,0 +1,31 @@
+
+
+<div id="bugs">
+    <!-- Bugs list will be displayed -->
+
+    <div class="right p-3">
+        <h2 class="main-heading mt-1 pt-5">Lists of Bugs</h2>
+        <table class="table w-200">
+    
+            <thead>
+                <tr class="list-group-item-dark">
+                    <th scope="col">Title</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Labels</th>
+                    <th scope="col">Author</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% allBugs.forEach(bug => { %>
+                    <tr class="list-group-item-primary">
+                        <td><%= bug.title %></td>
+                        <td><%= bug.description %></td>
+                        <td><%= bug.labels %></td>
+                        <td scope="col"><%= bug.author %></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+
+</div>

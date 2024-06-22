@@ -1,0 +1,93 @@
+<div class="container-lpage">
+    <div class="container main">
+        
+        <div class="left p-2">
+            <h1 class="main-heading text-center m-3">Platform for Creating Projects</h1>
+            <!-- <div class="actions"> -->
+                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-lg lbtn mx-2">
+                    Create Project
+                </button>
+            <!-- </div> -->
+        </div>
+
+      
+        <div class="right p-3">
+            <h2 class="main-heading mt-1 pt-5">Lists of Projects</h2>
+            <table class="table w-200">
+        
+                <thead>
+                    <tr class="list-group-item-dark">
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Author</th>
+                        <th scope="col">Details</th>
+                    </tr>
+                </thead>
+        
+                <tbody>
+            
+                    <% allProjects.forEach(pro => { %>
+            
+                        <tr class="list-group-item-primary">
+                            <td><%= pro.name %></td>
+                            <td><%= pro.description %></td>
+                            <td scope="col"><%= pro.author %></td>
+                            <td>
+                                <!-- <button class="btn open-btn"">Open Project</button> -->
+                                <a href="/details" class="btn btn-lg lbtn open-btn"> Open Project </a>
+                            </td>
+                        </tr>
+            
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+      
+
+    </div>
+</div>
+
+
+<!-- Modal for creating a project -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h3 class="modal-title bold" id="staticBackdropLabel">
+            Enter Details
+          </h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Form for creating a project -->
+          <form action="/createproject" method="post" class="p-2">
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Name</span>
+                <input required="" name="name" type="text" aria-label="name" class="form-control" placeholder="enter your name">
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Description</span>
+                <input required="" name="description" type="description" aria-label="description" class="form-control" placeholder="enter description details">
+              </div>
+            </div>
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Author</span>
+                <input required="" name="author" type="author" aria-label="author" class="form-control" placeholder="enter author details">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-md mt-2 lbtn">Create</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</div>
+
+  

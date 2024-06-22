@@ -1,0 +1,53 @@
+/* Navigation */
+
+.nav-styles {
+    background: linear-gradient(125deg,rgb(97, 97, 215),rgb(97, 97, 215), rgb(40, 16, 91), rgb(86, 111, 209));
+}
+
+/* job seeker & recruiter button */
+
+.actions {
+    margin-top: 100px;
+}
+.lbtn {
+    box-shadow: 2px 4px 6px #0b2342;
+    transition: all ease-in-out 0.5s;
+}
+.lbtn:hover {
+    transform: scale(1.1,1.1);
+    box-shadow: 0px 0px 12px 0.1px black;
+}
+
+/* Open project btn */
+/* .btn {
+    box-shadow: 2px 4px 6px #0b2342;
+    transition: all ease-in-out 0.5s;
+}
+.btn:hover {
+    transform: scale(1.1,1.1);
+    box-shadow: 0px 0px 12px 0.1px black;
+} */
+
+.open-btn {
+    background-color: #c2d6fb;
+    border-radius: 100px;
+    color: rgb(74, 152, 74);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    text-align: center;
+    text-decoration: none;
+    transition: all 600ms;
+    border: 0;
+    font-size: 15px;
+    user-select: none;
+    /* -webkit-user-select: none; */
+    touch-action: manipulation;
+    margin: 8px;
+  }
+  
+.open-btn:hover{
+    box-shadow: rgba(44,187,99,.25) 0 16px 32px;
+    transform: scale(1.10);
+}
+

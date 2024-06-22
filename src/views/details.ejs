@@ -1,0 +1,133 @@
+
+<script>
+    function submitForm() {
+      document.getElementById('selectForm').submit();
+    }
+</script>
+
+<!-- filter -->
+<div>
+    <div id="left-container" class="darkTheme d-flex justify-content-between">
+
+        <form id="selectForm" action="/label" method="POST">
+            <div id="filter">
+                <h2 class="mt-4 mb-4">Filter Bugs</h2>
+                <label for="filter-btn">Filter by Labels:</label>
+                <select id="filter-btn" name="selectedOption" class="form-control w-100 mt-2" onchange="submitForm()">
+                    <option value="Critical">Critical</option>
+                    <option value="High priority">High priority</option>
+                    <option value="Medium priority">Medium priority</option>
+                    <option value="Low priority">Low priority</option>
+                    <option value="Functional">Functional</option>
+                    <option value="Feature">Feature</option>
+                    <option value="UI/UX">UI/UX</option>
+                    <option value="Performance">Performance</option>
+                    <option value="Security">Security</option>
+                    <option value="Compatibility">Compatibility</option>
+                </select>
+            </div>
+        </form>
+
+        <div class="right pt-5">
+            <!-- <div class="actions"> -->
+                <button data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="btn btn-lg lbtn mx-2">
+                    Create a Bug
+                </button>
+            <!-- </div> -->
+        </div>
+
+    </div>
+
+    <div id="bugs">
+        <!-- Bugs list will be displayed -->
+
+        <div class="right p-3">
+            <h2 class="main-heading mt-1 pt-5">Lists of Bugs</h2>
+            <table class="table w-200">
+        
+                <thead>
+                    <tr class="list-group-item-dark">
+                        <th scope="col">Title</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Labels</th>
+                        <th scope="col">Author</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <% allBugs.forEach(bug => { %>
+                        <tr class="list-group-item-primary">
+                            <td><%= bug.title %></td>
+                            <td><%= bug.description %></td>
+                            <td><%= bug.labels %></td>
+                            <td scope="col"><%= bug.author %></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+    
+    
+</div>
+
+
+<!-- Modal for creating a Bug -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h3 class="modal-title bold" id="staticBackdropLabel">
+            Enter Details
+          </h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+            <!-- Form for creating a project -->
+          <form action="/createbug" method="post" class="p-2">
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Title</span>
+                <input required="" name="title" type="text" aria-label="title" class="form-control" placeholder="enter your title">
+              </div>
+            </div>
+  
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Description</span>
+                <input required="" name="description" type="description" aria-label="description" class="form-control" placeholder="enter description details">
+              </div>
+            </div>
+
+            <div class="input-group mb-3">
+                <select required="" multiple="" name="labels" class="form-select" aria-label="Default select example">
+                  <option selected="" disabled="">Select Labels for this Bug</option>
+                  <option value="Critical">Critical</option>
+                  <option value="High priority">High priority</option>
+                  <option value="Medium priority">Medium priority</option>
+                  <option value="Low priority">Low priority</option>
+                  <option value="Feature">Feature</option>
+                  <option value="Functional">Functional</option>
+                  <option value="UI/UX">UI/UX</option>
+                  <option value="Performance">Performance</option>
+                  <option value="Security">Security</option>
+                  <option value="Compatibility &amp; Algo">Compatibility &amp; Algo</option>
+                </select>
+              </div>
+
+            <div class="mb-3">
+              <div class="input-group">
+                <span class="input-group-text">Author</span>
+                <input required="" name="author" type="author" aria-label="author" class="form-control" placeholder="enter author details">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-md mt-2 lbtn">Create</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+</div>
